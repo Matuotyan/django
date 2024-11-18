@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <h1>ログイン</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="id_username">ユーザー名:</label>
+        <input type="text" name="username" id="id_username" required>
+        
+        <label for="id_password">パスワード:</label>
+        <input type="password" name="password" id="id_password" required>
+        
+        <button type="submit">ログイン</button>
+    </form>
+    <p>
+        会員登録は<a href="{% url 'register' %}">こちら</a>から行えます。
+    </p>
+    <p><a href="{% url 'job_list' %}">Back to Home</a></p>
+</body>
+</html>

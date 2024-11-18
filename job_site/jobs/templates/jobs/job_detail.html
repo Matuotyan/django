@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/job_detail.css' %}">
+</head>
+<body>
+    
+    <h1>{{ job.title }}</h1>
+    <p>{{ job.description }}</p>
+    <p>Posted by: {{ job.posted_by.username }}</p> <!-- 求人の投稿者を表示 -->
+    {% if job.id in applied_jobs %}  <!-- 変更された行 -->
+                <p>You have already applied for this job.</p>
+            {% else %}
+                <a href="{% url 'apply_for_job' job.id %}">Apply</a>
+            {% endif %}
+    <br>
+    <a href="{% url 'job_list' %}">Back to job listings</a> <!-- 戻るリンク -->
+</body>
+</html>

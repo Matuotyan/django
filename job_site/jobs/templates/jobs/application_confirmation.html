@@ -1,0 +1,22 @@
+<!-- jobs/templates/jobs/application_confirmation.html -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>応募完了</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/application_confirmation.css' %}">
+</head>
+<body>
+    <div class="oubodone_frame">
+        <h1 class="oubo_h1">応募ありがとうございました！</h1>
+    </div>
+    <div class="oubo_content_frame">
+        <p class="oubo_p">応募が正常に送信されました。</p>
+    </div>
+    <div class="back_frame">
+        <a class="back_to_list"href="{% url 'job_list' %}">求人一覧に戻る</a>
+    </div>
+</body>
+</html>

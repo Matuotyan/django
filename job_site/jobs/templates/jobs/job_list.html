@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/job_list.css' %}">
+</head>
+<body>
+
+<h1>Job Listings</h1>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Log out</button>
+</form>
+
+<ul>
+    {% for job in jobs %}
+        <li>
+            <h2><a href="{% url 'job_detail' job.id %}">{{ job.title }}</a></h2> <!-- 詳細リンク -->
+            <p>{{ job.description }}</p>
+            {% if job.id in applied_jobs %}  <!-- 変更された行 -->
+                <p>You have already applied for this job.</p>
+            {% else %}
+                <a href="{% url 'apply_for_job' job.id %}">Apply</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% if not user.is_authenticated %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to see more jobs.</p>
+{% endif %}
+</body>
+</html>
