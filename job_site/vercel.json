@@ -4,7 +4,7 @@
     ],
     "builds": [
         {
-            "src": "job_site/asgi.py",
+            "src": "job_site/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -22,7 +22,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "job_site/asgi.py"
+            "dest": "job_site/wsgi.py"
         },
         {
             "src": "/(.*)",
